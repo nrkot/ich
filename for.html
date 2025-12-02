@@ -1,0 +1,573 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>с днюхой</title>
+    <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        @font-face {
+            font-family: 'Minecraftia';
+            src: url('/fonts/Minecraftia-Regular.woff2') format('woff2'),
+                url('/fonts/Minecraftia-Regular.woff') format('woff'),
+                url('/fonts/Minecraftia-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family:"Lemon-Regular";
+            src: url("font/Lemon-Regular.ttf");
+        }
+        @font-face {
+            font-family:"OpenSans-Bold";
+            src: url("font/OpenSans-Bold.ttf");
+        }
+        @font-face {
+            font-family:"OpenSans-SemiBold";
+            src: url("font/OpenSans-SemiBold.ttf");
+        }
+        @font-face {
+            font-family:"OpenSans-Regular";
+            src: url("font/OpenSans-Regular.ttf");
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "OpenSans-Regular";
+            font-family: 'Minecraftia', sans-serif;
+        }
+
+        header{
+            width: 100%;
+            height: 100px; 
+            position:fixed;
+            background-color: rgb(83, 0, 131);
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 100px;
+            z-index: 999;
+        }
+        .logo{
+            display:flex;
+            justify-self: center;
+            align-items: center;
+            gap: 5px;
+        }
+        .logo h2{
+            font-family: "Press Start 2P", system-ui;
+            font-weight: 400;
+            color: #a141ef;
+        }
+        .logo svg{
+            width: 50px;
+            height: 50px;
+            border: 2px solid #821ad8;
+            border-radius: 50%;
+            box-shadow: rgb(42, 3, 105) 0px 20px 30px -10px;
+        }
+        nav{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 100px;
+            background-color: #000;
+            color: white;
+            font-family: "OpenSans-Regular";
+            font-size: 16px;
+            font-weight: 400;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            padding: 0 100px;
+        }
+
+        #nav-items{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        #nav-items li{
+            font-family:"OpenSans-SemiBold";
+            font-weight: 600;
+            font-size: 18px;
+            list-style: none;
+            margin-left: 100px;
+            text-transform: capitalize;  
+            cursor: pointer;
+            color: white;
+            
+        }
+        
+        #nav-items li a{
+            display: inline-block;
+            position: relative;
+
+        }
+        #nav-items li a::after{
+            display: block;
+            content: "";
+            width: 0;
+            height: 2px;
+            position: absolute;
+            background-color:#821ad8;
+            margin-top: 5px;
+            left: 0;
+            transition: width 0.3s ease-in;
+        }
+        #nav-items li a:hover::after{
+            width: 100%;
+        }
+        header a{
+            text-decoration:none;
+            color: white;
+        }
+        .hero-section{
+            background-color:rgb(83, 0, 131); ;
+            width: 100%;
+            height: 100vh;
+            padding: 0px 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .hero-section h1{
+            font-family:"Lemon-Regular";
+            font-weight: 400;
+            font-size: 64px;
+            width: 400px;
+            text-transform: capitalize;
+            color: white;
+        }
+        span{
+            color: #821ad8;
+        }
+        .hero-section p{
+            font-family:"OpenSans-Regular";
+            font-weight: 400;
+            font-size: 18px;
+            width: 309px;
+            padding: 30px 0px;
+            color: white;
+        }
+
+        .about-section{
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(255, 255, 255);
+        }
+        .about-text {
+            max-width: 500px;
+            font-family: "OpenSans-Regular";
+            font-size: 16px;
+            color: #000;
+
+        }
+
+        .about-text h3 {
+            font-family: "OpenSans-SemiBold";
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #821ad8;
+        }
+        .about-title{
+            text-align:center;
+        }
+
+        .about-text ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .about-text ul li {
+            margin-bottom: 5px;
+        }
+        .about-store-section {
+            padding: 100px 50px;
+            background-color: #f2f2f2;
+            font-family: "OpenSans-Regular";
+        }
+
+        .store-content {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .store-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .store-text h2 {
+            font-size: 32px;
+            color: #821ad8;
+            margin-bottom: 20px;
+            font-family: "OpenSans-SemiBold";
+        }
+
+        .store-text p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .store-text ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .store-text ul li {
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 16px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+
+        .store-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .store-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .friends{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 100px 0px;
+        }
+        .min-player{
+            width: 100%;
+            max-width: 500px;
+            padding: 14px 18px;
+            border-radius: 14px;
+            background: #ffffff0a;
+            backdrop-filter: blur(14px);
+            border: 1px solid #ffffff1a;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-family: Inter, sans-serif;
+        }
+
+        /* play button */
+        .play-btn{
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            border: none;
+            background: #ffffff10;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+        .play-btn:hover{
+            background: #ffffff20;
+        }
+
+        /* progress bar */
+        .bar-wrap{
+            flex: 1;
+            height: 6px;
+            background: #ffffff15;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .bar{
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #6a5cff, #61eaff);
+            transition: width .1s linear;
+        }
+
+        /* time */
+        .time{
+            color: #d8d8d8;
+            font-size: 13px;
+            min-width: 42px;
+            text-align: right;
+        }
+
+        /* volume */
+        .volume{
+            width: 80px;
+            cursor: pointer;
+        }
+        @media (max-width: 992px) {
+    header {
+        padding: 15px 30px;
+        height: 80px;
+    }
+
+    #nav-items li {
+        margin-left: 40px;
+        font-size: 16px;
+    }
+
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        padding: 150px 20px 60px;
+        gap: 40px;
+    }
+
+    .hero-section h1 {
+        font-size: 42px;
+        width: auto;
+    }
+
+    .hero-img img {
+        width: 240px;
+        height: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 10px 20px;
+    }
+
+    #nav-items {
+        gap: 20px;
+    }
+
+    #nav-items li {
+        margin-left: 20px;
+        font-size: 14px;
+    }
+
+    .hero-section h1 {
+        font-size: 32px;
+    }
+
+    .hero-section p {
+        font-size: 16px;
+        width: auto;
+    }
+
+    .store-content {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .store-image img {
+        width: 280px !important;
+        height: 280px !important;
+    }
+
+    .min-player {
+        max-width: 100%;
+        padding: 12px;
+    }
+
+    .friends {
+        padding: 60px 20px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        height: 70px;
+    }
+
+    #nav-items li {
+        margin-left: 10px;
+        font-size: 12px;
+    }
+
+    .hero-section {
+        padding: 130px 10px 40px;
+    }
+
+    .hero-section h1 {
+        font-size: 26px;
+        line-height: 1.3;
+    }
+
+    .hero-img img {
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    .store-text h2 {
+        font-size: 24px;
+    }
+
+    .store-text p,
+    .store-text ul li {
+        font-size: 15px;
+    }
+
+    .mc-audio-player {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .mc-controls {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .mc-volume {
+        width: 100%;
+    }
+
+    .friends h2 {
+        font-size: 22px;
+    }
+}
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="nav">
+        <ul id="nav-items">
+            <li  class="active"><a href="#">с днюхой</a></li>
+            <li><a href="#about">поздравление</a></li>
+            <li><a href="#friends">сколько нашей дружбе?</a><li>
+
+        </ul>
+    </div>
+</header>
+<div class="hero-section">
+    <div class="hero-content">
+        <h1>поздравляю с <span>17 летием</span> старая</h1>
+        <audio controls>
+            <source src="Ирина Аллегрова - С Днем Рождения.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <div class="hero-img">
+        <img src="https://freepngimg.com/save/41558-grandma-picture-png-file-hd/567x584" alt="animatronics" width="300px" height="300px">
+    </div>
+</div>
+<section class="about-store-section" id="about">
+    <div class="store-content" style="flex-wrap: wrap; gap: 50px; align-items: center; justify-content: center;">
+        <div class="store-text" style="max-width:600px; text-align: left;">
+            <h2>С 17-летием свлп</h2>
+            <p>
+                с днюхой старая, хочу поздравить тебя и пожелать тебе всего наилучшего удачи и остваться такой же крутышкой, очень хочется увидеться с тобой😔
+                вообщем желаю тебе:
+            </p>
+            <ul>
+                <li>Смех и радости</li>
+                <li>успехов в новых начинаниях</li>
+                <li>оставайся такой же веселой как и всегда</li>
+                <li>дохера робуксов потом поделишься</li>
+            </ul>
+            <button id="achievementBtn" style="padding:10px 20px; font-size:16px; background:#821ad8; color:white; border:none; border-radius:8px; cursor:pointer;">Получить достижение</button>
+            <div style="display:none">
+                <img src="https://minecraft.wiki/images/thumb/Cake_with_Candle_JE1_BE1.png/160px-Cake_with_Candle_JE1_BE1.png?0b806" alt="">
+            </div>
+        </div>
+        <div class="store-image">
+            <img src="WhatsApp Image 2025-12-01 at 20.27.22_e32ce9c3.jpg" alt="Friendship" style="border-radius:50%; width:400px; height:400px; object-fit:cover;">
+        </div>
+    </div>
+    
+
+    <div id="achievementPopup"style="
+    display:none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:rgba(116, 9, 143, 0.95);
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    z-index:10000;
+    opacity:0;
+    transition:opacity .4s ease;">
+        <h2 style="color:#ffee00; font-size:32px; margin-bottom:20px;">Achievement Unlocked!</h2>
+        <p style="font-size:18px; margin-bottom:20px; color:white;">You're a year older!</p>
+        <img src="https://minecraft.wiki/images/thumb/Cake_with_Candle_JE1_BE1.png/160px-Cake_with_Candle_JE1_BE1.png" alt="Cake" style="width:150px; height:150px;">
+    </div>
+
+
+
+</section>
+
+
+ 
+<section class="friends" id="friends">
+    <h2>Сколько нашей дружбе?</h2>
+    <p>Мы знакомы с <strong>20 августа 2025 года</strong></p>
+    <div class="timer" id="timer">0 дней</div>
+
+</section>
+
+<audio id="achievementSound" src="challenge_complete_uHsY1YS.mp3"></audio>
+
+
+</body>
+<script>
+    // Таймер дружбы
+    function updateFriendshipTimer() {
+        const startDate = new Date("2025-08-20T00:00:00");
+        const now = new Date();
+        const diff = now - startDate;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById("timer").innerText = days + " дней дружим :D";
+    }
+    setInterval(updateFriendshipTimer, 1000);
+    updateFriendshipTimer();
+
+    // Achievement popup
+    const btn = document.getElementById('achievementBtn');
+    const popup = document.getElementById('achievementPopup');
+    const sound = document.getElementById('achievementSound');
+
+    btn.addEventListener('click', () => {
+        popup.style.display = 'block';
+
+        // небольшая задержка, чтобы transition сработал
+        setTimeout(() => {
+            popup.style.opacity = 1;
+        }, 10);
+
+        sound.currentTime = 0; // перезапуск звука
+        sound.play();
+
+        setTimeout(() => {
+            popup.style.opacity = 0;
+
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 400);
+        }, 5000);
+    });
+</script>
+</html>
